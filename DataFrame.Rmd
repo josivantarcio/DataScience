@@ -1,0 +1,15 @@
+---
+Data Frame
+---
+## Data Frame pode ter dados mistos
+```{r}
+longley
+longley[,1:3]
+longley$Unemployed
+longley['Unemployed']
+```
+```{r}
+ability.cov
+ability.cov$cov[1:3,]
+class(ability.cov$cov)
+```

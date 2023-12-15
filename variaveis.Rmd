@@ -1,0 +1,33 @@
+```{r}
+##variaveis
+ob = 8L
+class(ob)
+```
+```{r}
+logic = FALSE
+logic2 = T
+class(logic)
+```
+```{r}
+c = 2
+d = 4
+e = (c + d) * d
+e
+```
+
+
+```{r}
+a = 1
+b = 2
+a < b
+a == b
+class(a)
+```
+```{r}
+a = 5
+b = 2495
+c <- a + b
+c
+sqrt(c)
+```
+
