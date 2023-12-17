@@ -1,0 +1,27 @@
+---
+principais funcoes
+---
+```{r}
+esoph
+## os 6 primeiros ou ultimos registros
+head(esoph)
+tail(esoph)
+## selecionando a quantidade de reistros desejados, no caso seria no ex. 10
+head(esoph, n=10)
+tail(esoph, 10)
+
+```
+---
+Dimensao
+---
+```{r}
+##em R quando usado a funcao dim() sempre mostrara na Ordem Linhas e Colunas
+dim(esoph)
+dim(esoph)[1] ### [1] mostra as linhas [2] mostra as colunas
+```
+---
+Comprimento
+---
+```{r}
+length(islands)
+```
