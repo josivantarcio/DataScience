@@ -1,0 +1,30 @@
+---
+Importar arquivo CSV
+---
+```{r}
+pathArquivo = file.choose()
+head(pathArquivo)
+#install.packages("openxlsx")
+library(openxlsx)
+
+arquivo = read.csv(pathArquivo,header = TRUE,sep = ';')
+arquivo
+dim(arquivo)
+```
+```{r}
+arquivoXLSX = file.choose()
+arquivo2 = read.csv(arquivoXLSX,header = TRUE,sep = '|')
+arquivo2
+planilha1 = read.xlsx(arquivoXLSX, sheet = 1)
+planilha1
+length(arquivo2)
+dim(arquivo2)
+```
+```{r}
+arqxls = file.exists(arquivoXLSX)
+arqxls = file.choose(arquivoXLSX)
+abrirArquivo = read.xlsx(arqxls,sheet = 1)
+getwd()
+setwd('F:\\ws\\Ciencia de Dados\\DataScience\\exemploDados')
+abrirArquivo
+```
