@@ -1,30 +1,27 @@
 ---
-Importar arquivo CSV
+Importando Arquivos XLSX e CSV
 ---
-```{r}
-pathArquivo = file.choose()
-head(pathArquivo)
-#install.packages("openxlsx")
-library(openxlsx)
 
-arquivo = read.csv(pathArquivo,header = TRUE,sep = ';')
-arquivo
-dim(arquivo)
+```{r}
+install.packages('openxlsx')
+library(openxlsx)
+```
+
+
+```{r}
+## tratamento com arquivos CSV
+path_file = file.choose()
+if(file.exists(path_file))
+  dados = read.csv(path_file, header = TRUE, sep = ',')
+  dados
 ```
 ```{r}
-arquivoXLSX = file.choose()
-arquivo2 = read.csv(arquivoXLSX,header = TRUE,sep = '|')
-arquivo2
-planilha1 = read.xlsx(arquivoXLSX, sheet = 1)
-planilha1
-length(arquivo2)
-dim(arquivo2)
+## tratamento com arquivo XLSX
+
+pathxlsx = file.choose()
+if(file.exists(pathxlsx))
+  dados = read.xlsx(pathxlsx, sheet = 1)
+  dados
+  dim(dados)
 ```
-```{r}
-arqxls = file.exists(arquivoXLSX)
-arqxls = file.choose(arquivoXLSX)
-abrirArquivo = read.xlsx(arqxls,sheet = 1)
-getwd()
-setwd('F:\\ws\\Ciencia de Dados\\DataScience\\exemploDados')
-abrirArquivo
-```
+
