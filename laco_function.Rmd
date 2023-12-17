@@ -1,0 +1,54 @@
+---
+Estrutura de Programação
+---
+```{r}
+##IF
+
+a = 9
+b = 10
+
+if(a > b){
+  print('A é Maior')
+}else{
+  print('B é Maior')
+}
+
+```
+
+```{r}
+##IFELSE
+x = ifelse(a > b, 'A é Maior', 'B é Maior')
+x
+```
+```{r}
+library('openxlsx')
+pathFile = file.choose()
+dados = read.xlsx(pathFile, sheet = 1)
+##FOR
+dados
+for (i in dados[1]) {
+  print(i)
+}
+```
+```{r}
+##While
+i = 1
+while (i <= 20) {
+  print(i)
+  i = i + 1
+}
+```
+```{r}
+##Funcoes
+### <nomeFuncao> = function(){}
+
+parImpar = function(x){
+  return (ifelse(x %% 2 == 0, "Par", "Impar"))
+}
+
+parImpar(345)
+parImpar(2584788)
+parImpar(-2)
+```
+
+
