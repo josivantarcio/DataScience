@@ -1,0 +1,25 @@
+---
+Principais Funções - parte 2
+---
+```{r}
+## Quais sao os nomes das colunas? utilize...
+colnames(esoph)
+esoph
+
+## Quais sao os nomes das linhas? utilize...
+rownames(esoph)
+```
+---
+resumo
+---
+```{r}
+summary(esoph)
+```
+---
+acessar arquivo
+---
+```{r}
+a = file.choose()
+a
+```
+
