@@ -1,0 +1,25 @@
+---
+Limpeza de Dados
+---
+
+```{r}
+path = file.choose()
+dados = read.csv(path, sep = ';', na.strings = '', stringsAsFactors = T)
+head(dados)
+summary(dados)
+```
+
+---
+Colunas
+---
+
+## Dar nomes corretos as as Colunas
+
+```{r}
+colnames(dados) = c('id','scores','estado','genero','idade','patrimonio','saldo','produtos','temCartaCredito','ativo','salario','saiu')
+head(dados)
+```
+```{r}
+count = table(dados$estado)
+barplot(count, main = 'Estados', xlab = 'estados')
+```
