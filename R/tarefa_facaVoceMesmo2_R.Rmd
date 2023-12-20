@@ -1,0 +1,129 @@
+---
+title: "tarefa_facaVoceMesmo2"
+output: html_notebook
+
+## Tratar dados 'tempo.csv'
+## Aparência: sol, nublado, chuva
+## Temperatura: -130 ~ 130 F
+## Umidade: 0 ~ 100
+## Jogar: sim/nao
+## Tratar valores NAs
+---
+
+```{r}
+## importar dados, string vazia com NA, String com Fatores
+dados = read.csv('tempo.csv', sep = ';',  na.strings = '',stringsAsFactors = TRUE)
+head(dados)
+summary(dados) ## resumo dos dados
+```
+
+```{r}
+#EXPLORAR DADOS PARAMETRIZADOS
+
+
+contarAparencia = table(dados$Aparencia)
+contarAparencia
+barplot(contarAparencia, xlab = 'Aparencia')
+
+contarVendo = table(dados$Vento)
+contarVendo
+barplot(contarVendo, xlab = 'Vento')
+
+contarJogar = table(dados$Jogar)
+contarJogar
+barplot(contarJogar, xlab = 'Jogar')
+
+### Feito o procedimento de exploração de dados parametrizados
+```
+
+```{r}
+# EXPLORAR DADOS NUMERICOS
+
+summary(dados$Temperatura)
+boxplot(dados$Temperatura)
+hist(dados$Temperatura, main = 'Temperatura', xlab = 'temperatura')
+
+summary(dados$Umidade)
+boxplot(dados$Umidade)
+hist(dados$Umidade, main = 'Umidade', xlab = 'Umidade')
+
+### Feito o procedimento de exploração de dados numericos
+```
+
+```{r}
+# EXPLORAR VALORES FALTANDO
+# retorna todos os campos com NAs
+dados [!complete.cases(dados) , ]  
+
+```
+
+```{r}
+# INICIAR O PROCESSO DE TRATAMENTO
+
+## Aparência: sol, nublado, chuva - OK!
+
+### resumo de dados coluna aparencia - existe um paramentro na aparencia errado - "menos". colocar o moda sol
+summary(dados$Aparencia) 
+
+## verificar se há dados na coluna aparencia com NA - não houve!
+dados[is.na(dados$Aparencia),] 
+
+### mudança de valores de "menos" para "sol"
+dados[dados$Aparencia == 'menos',]$Aparencia = 'sol'
+
+summary(dados$Aparencia)
+
+### removido o fator "menos" da relação
+dados$Aparencia = factor(dados$Aparencia)  
+summary(dados$Aparencia)
+```
+
+```{r}
+## Temperatura: -130 ~ 130 F - OK!
+
+summary(dados$Temperatura)
+
+### verificar se existe temperatura acima de 130F ou -130F - foi localizado um registro!
+dados[dados$Temperatura < -130 | dados$Temperatura > 130 , ]$Temperatura 
+
+## verificar se há dados nas linhas da coluna temperatura com NAs - nao foi localizado nenhum NAs!
+dados[is.na(dados$Temperatura),] 
+
+median(dados$Temperatura) ## mediana das temperaturas
+
+dados[dados$Temperatura < -130 | dados$Temperatura > 130 , ]$Temperatura = median(dados$Temperatura)
+
+summary(dados$Temperatura)
+
+
+```
+
+```{r}
+## Umidade: 0 ~ 100 - OK!
+
+summary(dados$Umidade)
+
+### verificar se tem umidade baixo de 0 ou acima de 100 - foi localizado uma com '200' e outra com Na!
+dados[dados$Umidade < 0 | dados$Umidade > 100,]$Umidade
+
+dados[is.na(dados$Umidade),] ### registro 4 está com umidade NA!
+dados[is.na(dados$Umidade),]$Umidade = median(dados$Umidade,na.rm = TRUE) ### processo com NA resolvido na columa Umidade
+
+### dados com Umidade acima de 100 ou abaixo de 0, foram corrigidas pela mediana!
+dados[dados$Umidade < 0 | dados$Umidade > 100 ,]$Umidade = median(dados$Umidade) 
+
+summary(dados$Umidade)
+```
+
+```{r}
+## Tratar valores NAs em Vento - OK!
+
+summary(dados$Vento)
+
+dados[is.na(dados$Vento),]
+dados[is.na(dados$Vento),]$Vento = 'FALSO'
+
+```
+
+
+## Jogar: sim/nao
