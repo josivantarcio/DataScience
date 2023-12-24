@@ -1,0 +1,48 @@
+---
+title: "Gráficos Básicos"
+output: html_notebook
+---
+Histograma
+```{r}
+trees
+hist(trees$'Height')
+hist.default(trees$'Height', main = "Árvores", ylab = 'Frequencia', xlab = 'Altura', col = 'blue', density = 90)
+```
+Densidade
+```{r}
+plot(density(trees$Height))
+```
+
+Densidade sobre Histograma, paramentro Par
+```{r}
+hist(trees$Height, main = NULL, xlab = NULL, ylab = NULL)
+par(new=TRUE)
+plot(density(trees$Height))
+
+```
+
+Dispersão
+```{r}
+plot(trees$Girth, trees$Volume)
+plot(trees$Girth, trees$Volume, xlab = 'Circunferencia', ylab = 'Volume', main = 'Circunferencia x Volume', col = 'blue')
+plot(trees$Girth, trees$Volume, xlab = 'Circunferencia', ylab = 'Volume', main = 'Circunferencia x Volume', col = 'blue', pch = 20)
+```
+
+```{r}
+
+plot(trees)
+```
+Divisao de Tela
+```{r}
+split.screen(figs = c(2,2))
+screen(1)
+barplot(trees$Girth, trees$Height, main = 'gráfico de barras')
+screen(2)
+plot(trees$Girth, trees$Height, main = 'gráfica plot', ylab = 'largura', xlab = 'dimensão')
+screen(3)
+plot(density(trees$Volume),main = 'gráfico de densidade c/ plot', ylab = 'densidade')
+screen(4)
+hist(trees$Volume, main = 'gráfico de histograma', ylab = 'frequencia', xlab = 'volume')
+close.screen(all = TRUE)
+```
+
