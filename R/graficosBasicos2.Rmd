@@ -1,0 +1,34 @@
+---
+title: "Gráficos Básicos II"
+output: html_notebook
+---
+Boxplot
+```{r}
+boxplot(trees)
+boxplot(trees$Volume)
+boxplot(trees$Volume, horizontal = T, col = 'blue', main = 'Trees - Boxplot', xlab = 'volumes')
+## sem o outline
+boxplot(trees$Volume, horizontal = T, col = 'blue', main = 'Trees - Boxplot', xlab = 'volumes', outline = F)
+```
+
+Agregação
+```{r}
+InsectSprays ##tabela modelo do RStudio
+selecao = aggregate(. ~ spray, data = InsectSprays, sum)
+selecao
+```
+Gráfico de Barras
+```{r}
+barplot(selecao$count, col = gray.colors(6), xlab = 'Spray', ylab = 'Total', names.arg = selecao$spray)
+```
+
+Gráfico de Setor - Pizza
+```{r}
+pie(selecao$count, labels = selecao$spray, main = 'Spray - Pizza', col = c(1:6))
+```
+Gráfico de Setor - Pizza com Legenda
+```{r}
+pie(selecao$count, labels = NA, main = 'Spray - Pizza com Legenda', col = c(1:6))
+legend('bottomleft', legend = selecao$spray, cex = 1, fill = c(1:6))
+```
+
