@@ -11,7 +11,8 @@ library("RColorBrewer")
 
 
 ```{r}
-dados = read.csv('dados.csv', sep=";")
+pathFile = file.choose()
+dados = read.csv(pathFile, sep=";")
 head(dados)
 ```
 

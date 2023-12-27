@@ -1,0 +1,16 @@
+---
+title: "Tabelas"
+output: html_notebook
+---
+```{r}
+#install.packages("stargazer")
+library(stargazer)
+```
+Formato Latex
+```{r}
+stargazer(iris, type = 'text')
+```
+Salvar em Disco
+```{r}
+stargazer(iris, out = 'floresIris.txt', summary = F)
+```
