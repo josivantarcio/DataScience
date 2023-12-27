@@ -1,0 +1,34 @@
+---
+title: "Lattice"
+output: html_notebook
+---
+```{r}
+library(lattice)
+```
+Boxplot
+```{r}
+bwplot(trees$Volume)
+bwplot(trees$Volume, main = 'Trees Volume - lattice', xlab = 'volume')
+```
+Histograma
+```{r}
+histogram(trees$Volume, main = 'lattice - histograma', xlab = 'volumes', aspect = 1, type = 'percent', nint = 5)
+```
+Histograma Condicional
+```{r}
+chickwts
+histogram(chickwts$weight)
+##agregar valores
+aggregate(chickwts$weight, by=list(chickwts$feed), FUN = sum)
+## histograma condicional
+histogram(~weight | feed, data = chickwts )
+```
+```{r}
+CO2
+xyplot(CO2$conc ~ CO2$uptake)
+#type é a origem
+xyplot(CO2$conc ~ CO2$uptake | CO2$Type)
+##refrigerado ou não
+xyplot(CO2$conc ~ CO2$uptake | CO2$Treatment)
+```
+
