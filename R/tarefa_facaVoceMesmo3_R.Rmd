@@ -1,0 +1,28 @@
+---
+title: "Faça Você Mesmo 3"
+output: html_notebook
+---
+01. Arquivo dados.csv
+  CODIGO
+  MUNICIPIO
+  PIB
+  VALOREMPENHO
+  
+```{r}
+dados = read.csv('dados.csv', sep = ';')
+head(dados)
+```
+  2. Empenho em diárias em municípios gaúchos e PIB do municipio
+  
+```{r}
+summary(dados$VALOREMPENHO)
+summary(dados$PIB)
+```
+  3. Execute um processo de Análise de Dados Exploratória para conhecimento/Entendimento deste dados
+  
+```{r}
+hist(dados$PIB, main = 'PIB Municipios')
+hist.default(dados$VALOREMPENHO, main = 'Empenho', xlab = 'valor', ylab = 'frequencia')
+```
+  
+  
