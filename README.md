@@ -18,5 +18,7 @@ I encourage contributions, feedback, and suggestions from the data science commu
 
 Feel free to explore, learn, and contribute to this repository!
 
+Orientação By Fernando Amaral
+
 Happy coding!
 
